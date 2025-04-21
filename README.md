@@ -9,9 +9,10 @@ MVP of a digital marketplace with SSR, SSG, Stripe and MongoDB.
 - Stripe
 - MongoDB
 - NextAuth.js
+- Prisma
 
 ## Features
-- Authorization
+- Authorization, Google OAuth
 - Add and buy digital goods
 - Stripe integration
 - Secure Routes
