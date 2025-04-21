@@ -98,7 +98,18 @@ export const authOptions: NextAuthOptions = {
 
       if (!dbUser) {
         if (user) {
-          token.id = user?.id;
+          // Create new user for Google authentication
+          const newUser = await prisma.user.create({
+            data: {
+              email: token.email as string,
+              name: token.name as string,
+              image: token.picture as string,
+              password: "", // Empty password for Google auth
+              role: "USER",
+            },
+          });
+          token.id = newUser.id;
+          token.role = newUser.role;
         }
         return token;
       }

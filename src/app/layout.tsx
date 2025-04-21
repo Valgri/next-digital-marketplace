@@ -24,7 +24,7 @@ export default function RootLayout({
         <ClientProviders>
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 flex justify-center">{children}</main>
           </div>
           <Toaster />
         </ClientProviders>
