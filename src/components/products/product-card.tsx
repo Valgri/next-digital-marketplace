@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
@@ -5,6 +8,8 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Product, User } from "@prisma/client";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: Product & {
@@ -13,6 +18,34 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleBuy = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ productId: product.id }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create checkout session");
+      }
+
+      const { url } = await response.json();
+      router.push(url);
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Card className="overflow-hidden">
       <Link href={`/products/${product.id}`}>
@@ -59,8 +92,8 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardContent>
       <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <span className="font-semibold">${product.price}</span>
-        <Button asChild>
-          <Link href={`/products/${product.id}`}>View Details</Link>
+        <Button onClick={handleBuy} disabled={isLoading}>
+          {isLoading ? "Processing..." : "Buy Now"}
         </Button>
       </CardFooter>
     </Card>
