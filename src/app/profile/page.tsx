@@ -45,7 +45,7 @@ export default function ProfilePage() {
           </div>
           <div className="pt-4">
             <Button
-              variant="destructive"
+              variant="outline"
               onClick={() => signOut({ callbackUrl: "/" })}
             >
               Sign Out

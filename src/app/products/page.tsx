@@ -27,8 +27,8 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   return (
-    <div className="container py-8">
-      <div className="flex items-center justify-between mb-8">
+    <div className="container py-8 min-w-[100%]">
+      <div className="max-w-6xl mx-auto flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold">Products</h1>
         <Button asChild>
           <Link href="/products/new">Create Product</Link>
@@ -46,7 +46,7 @@ export default async function ProductsPage() {
           </Button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

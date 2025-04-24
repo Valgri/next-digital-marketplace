@@ -1,8 +1,9 @@
 import { Product } from "@prisma/client";
 import { formatDistanceToNow } from "date-fns";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { AnimatedCard } from "@/components/ui/animated-card";
 
 interface ProductListProps {
   products: Product[];
@@ -22,8 +23,8 @@ export function ProductList({ products }: ProductListProps) {
 
   return (
     <div className="space-y-4">
-      {products.map((product) => (
-        <Card key={product.id} className="cursor-pointer hover:bg-muted/50 transition-all duration-200 shadow-sm hover:shadow-md border-primary/10">
+      {products.map((product, index) => (
+        <AnimatedCard key={product.id} delay={index * 0.1}>
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
@@ -56,7 +57,7 @@ export function ProductList({ products }: ProductListProps) {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </AnimatedCard>
       ))}
     </div>
   );

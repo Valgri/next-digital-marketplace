@@ -13,11 +13,8 @@ export default function HomePage() {
           find everything you need in one place.
         </p>
         <div className="flex gap-4">
-          <Button asChild size="lg">
+          <Button asChild size="lg" variant="outline">
             <Link href="/products">Browse Products</Link>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link href="/auth/register">Start Selling</Link>
           </Button>
         </div>
       </div>

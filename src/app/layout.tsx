@@ -1,16 +1,55 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 import { Navbar } from "@/components/layout/navbar";
-import { ClientProviders } from "@/components/providers/client-providers";
+import { Providers } from "@/components/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Digital Marketplace",
-  description: "Buy and sell digital products",
-  keywords: ["digital", "marketplace", "products", "download"],
+  title: {
+    default: "Digital Marketplace - Buy and Sell Digital Products",
+    template: "%s | Digital Marketplace"
+  },
+  description: "Buy and sell digital products securely. Instant downloads, secure payments, and a wide range of digital goods.",
+  keywords: ["digital marketplace", "digital products", "e-commerce", "digital downloads", "online store"],
+  authors: [{ name: "Your Name" }],
+  creator: "Your Name",
+  publisher: "Your Name",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    title: "Digital Marketplace",
+    description: "Buy and sell digital products securely",
+    siteName: "Digital Marketplace",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Marketplace",
+    description: "Buy and sell digital products securely",
+    creator: "@yourtwitter",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-site-verification",
+  },
 };
 
 export default function RootLayout({
@@ -21,13 +60,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ClientProviders>
-          <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1 flex justify-center">{children}</main>
-          </div>
-          <Toaster />
-        </ClientProviders>
+        <Providers>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+        </Providers>
       </body>
     </html>
   );

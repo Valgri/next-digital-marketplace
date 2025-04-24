@@ -1,0 +1,59 @@
+{
+  "common": {
+    "products": "Products",
+    "dashboard": "Dashboard",
+    "admin": "Admin",
+    "login": "Login",
+    "register": "Register",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "create": "Create",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "auth": {
+    "login": {
+      "title": "Login to your account",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "noAccount": "Don't have an account?",
+      "register": "Register"
+    },
+    "register": {
+      "title": "Create an account",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign up",
+      "haveAccount": "Already have an account?",
+      "login": "Login"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "create": "Create Product",
+    "edit": "Edit Product",
+    "delete": "Delete Product",
+    "noProducts": "No products found",
+    "createFirst": "Create your first product",
+    "price": "Price",
+    "description": "Description",
+    "category": "Category",
+    "image": "Image",
+    "file": "File"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "orders": "My Orders",
+    "products": "My Products",
+    "noOrders": "You haven't made any purchases yet",
+    "noProducts": "You haven't created any products yet",
+    "browseProducts": "Browse Products",
+    "createProduct": "Create Product"
+  }
+}

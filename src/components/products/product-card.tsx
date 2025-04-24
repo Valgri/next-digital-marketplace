@@ -92,7 +92,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardContent>
       <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <span className="font-semibold">${product.price}</span>
-        <Button onClick={handleBuy} disabled={isLoading}>
+        <Button onClick={handleBuy} disabled={isLoading} className="cursor-pointer">
           {isLoading ? "Processing..." : "Buy Now"}
         </Button>
       </CardFooter>

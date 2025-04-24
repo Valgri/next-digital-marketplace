@@ -1,0 +1,59 @@
+{
+  "common": {
+    "products": "Товары",
+    "dashboard": "Панель управления",
+    "admin": "Админ",
+    "login": "Войти",
+    "register": "Регистрация",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "view": "Просмотр",
+    "create": "Создать",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "loading": "Загрузка...",
+    "error": "Ошибка",
+    "success": "Успешно"
+  },
+  "auth": {
+    "login": {
+      "title": "Вход в аккаунт",
+      "email": "Email",
+      "password": "Пароль",
+      "submit": "Войти",
+      "noAccount": "Нет аккаунта?",
+      "register": "Зарегистрироваться"
+    },
+    "register": {
+      "title": "Создание аккаунта",
+      "name": "Имя",
+      "email": "Email",
+      "password": "Пароль",
+      "submit": "Зарегистрироваться",
+      "haveAccount": "Уже есть аккаунт?",
+      "login": "Войти"
+    }
+  },
+  "products": {
+    "title": "Товары",
+    "create": "Создать товар",
+    "edit": "Редактировать товар",
+    "delete": "Удалить товар",
+    "noProducts": "Товары не найдены",
+    "createFirst": "Создайте свой первый товар",
+    "price": "Цена",
+    "description": "Описание",
+    "category": "Категория",
+    "image": "Изображение",
+    "file": "Файл"
+  },
+  "dashboard": {
+    "title": "Панель управления",
+    "orders": "Мои заказы",
+    "products": "Мои товары",
+    "noOrders": "У вас пока нет покупок",
+    "noProducts": "Вы еще не создали товары",
+    "browseProducts": "Просмотреть товары",
+    "createProduct": "Создать товар"
+  }
+}

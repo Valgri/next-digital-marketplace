@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const isAdmin = session?.user?.role === "ADMIN";
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 min-w-[100%]">
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="aspect-video relative rounded-lg overflow-hidden">
@@ -101,7 +101,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   </Button>
                 </div>
               ) : (
-                <Button>Buy Now</Button>
+                <Button className="cursor-pointer">Buy Now</Button>
               )}
             </div>
           </div>
