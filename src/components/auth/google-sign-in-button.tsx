@@ -10,7 +10,7 @@ export function GoogleSignInButton() {
   const handleGoogleSignIn = async () => {
     try {
       await signIn("google", { callbackUrl: "/" });
-    } catch (error: unknown) {
+    } catch {
       toast({
         variant: "destructive",
         title: "Error",

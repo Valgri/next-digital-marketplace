@@ -67,7 +67,7 @@ export default function LoginPage() {
         router.push("/");
       }
       router.refresh();
-    } catch (error: unknown) {
+    } catch {
       toast({
         variant: "destructive",
         title: "Error",

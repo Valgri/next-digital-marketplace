@@ -14,7 +14,7 @@ export function OrderList({ orders }: OrderListProps) {
   if (orders.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-muted-foreground">You haven't made any purchases yet.</p>
+        <p className="text-muted-foreground">You haven&apos;t made any purchases yet.</p>
         <Button asChild className="mt-4 cursor-pointer shadow-md hover:shadow-lg transition-shadow">
           <Link href="/products">Browse Products</Link>
         </Button>

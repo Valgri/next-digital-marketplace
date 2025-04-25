@@ -86,7 +86,7 @@ export function ProductForm({ initialData, isEditing }: ProductFormProps) {
         try {
           const errorData = await response.json();
           errorMessage = errorData.message || errorMessage;
-        } catch (e) {
+        } catch {
           // If the response is not JSON, use the status text
           errorMessage = response.statusText || errorMessage;
         }

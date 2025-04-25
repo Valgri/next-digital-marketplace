@@ -39,7 +39,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
       const { url } = await response.json();
       router.push(url);
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);

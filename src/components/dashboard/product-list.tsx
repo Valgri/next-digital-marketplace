@@ -13,7 +13,7 @@ export function ProductList({ products }: ProductListProps) {
   if (products.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-muted-foreground">You haven't created any products yet.</p>
+        <p className="text-muted-foreground">You haven&apos;t created any products yet.</p>
         <Button asChild className="mt-4 cursor-pointer shadow-md hover:shadow-lg transition-shadow">
           <Link href="/products/new">Create Product</Link>
         </Button>

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OrderList } from "./order-list";
 import { ProductList } from "./product-list";
 import { Order, Product } from "@prisma/client";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface DashboardTabsProps {
   orders: (Order & {
