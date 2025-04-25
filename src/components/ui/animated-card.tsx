@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, MotionProps } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 interface AnimatedCardProps extends React.HTMLAttributes<HTMLDivElement> {

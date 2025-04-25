@@ -14,7 +14,6 @@ interface DashboardTabsProps {
 }
 
 export function DashboardTabs({ orders, products }: DashboardTabsProps) {
-  const [activeTab, setActiveTab] = useState("orders");
 
   return (
     <Tabs defaultValue="orders" className="w-full">
