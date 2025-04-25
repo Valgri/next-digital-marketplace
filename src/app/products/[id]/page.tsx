@@ -9,9 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface ProductPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>
 }
 
 async function getProduct(id: string) {
@@ -38,7 +36,7 @@ async function getProduct(id: string) {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const session = await getServerSession(authOptions);
-  const product = await getProduct(params.id);
+  const product = await getProduct((await params).id);
 
   if (!product) {
     notFound();

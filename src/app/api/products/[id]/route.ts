@@ -15,12 +15,12 @@ const productSchema = z.object({
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const product = await prisma.product.findUnique({
       where: {
-        id: params.id,
+        id: (await params).id,
       },
       include: {
         user: {
@@ -45,7 +45,7 @@ export async function GET(
 
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -56,7 +56,7 @@ export async function PUT(
 
     const product = await prisma.product.findUnique({
       where: {
-        id: params.id,
+        id: (await params).id,
       },
     });
 
@@ -73,7 +73,7 @@ export async function PUT(
 
     const updatedProduct = await prisma.product.update({
       where: {
-        id: params.id,
+        id: (await params).id,
       },
       data: validatedData,
     });
@@ -91,7 +91,7 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -102,7 +102,7 @@ export async function DELETE(
 
     const product = await prisma.product.findUnique({
       where: {
-        id: params.id,
+        id: (await params).id,
       },
     });
 
@@ -116,7 +116,7 @@ export async function DELETE(
 
     await prisma.product.delete({
       where: {
-        id: params.id,
+        id: (await params).id,
       },
     });
 

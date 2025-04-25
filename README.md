@@ -1,6 +1,8 @@
 # Digital Marketplace (Next.js Fullstack)
 
 MVP of a digital marketplace with SSR, SSG, Stripe and MongoDB.
+Public url - https://next-digital-marketplace-ewr.vercel.app/
+
 
 ## Stack
 - Next.js (App Router, SSR, SSG)

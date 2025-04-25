@@ -51,7 +51,10 @@ export const authOptions: NextAuthOptions = {
             hasPassword: !!user.password
           });
 
-          console.log("Comparing passwords");
+          if (!user.password) {
+            console.log("User has no password set");
+            return null;
+          }
           const isPasswordValid = await compare(credentials.password, user.password);
           console.log("Password comparison result:", isPasswordValid);
 

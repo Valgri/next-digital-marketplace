@@ -2,10 +2,13 @@ import { prisma } from "@/lib/db/prisma";
 import { ProductCard } from "@/components/products/product-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Product, User } from "@prisma/client";
+
+type ProductWithUser = Product & { user: Pick<User, "name" | "image"> };
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
-async function getProducts() {
+async function getProducts(): Promise<ProductWithUser[]> {
   const products = await prisma.product.findMany({
     include: {
       user: {
@@ -24,7 +27,7 @@ async function getProducts() {
 }
 
 export default async function ProductsPage() {
-  const products = await getProducts();
+  const products: ProductWithUser[] = await getProducts();
 
   return (
     <div className="container py-8 min-w-[100%]">

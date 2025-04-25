@@ -5,9 +5,7 @@ import { authOptions } from "@/lib/auth/auth.config";
 import { ProductForm } from "@/components/products/product-form";
 
 interface EditProductPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>
 }
 
 async function getProduct(id: string) {
@@ -26,7 +24,7 @@ async function getProduct(id: string) {
 
 export default async function EditProductPage({ params }: EditProductPageProps) {
   const session = await getServerSession(authOptions);
-  const product = await getProduct(params.id);
+  const product = await getProduct((await params).id);
 
   if (!session?.user) {
     redirect("/auth/login");

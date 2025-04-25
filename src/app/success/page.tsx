@@ -7,31 +7,30 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface SuccessPageProps {
-  searchParams: {
-    session_id?: string;
-  };
+  searchParams: Promise<{ session_id?: string | undefined }>
 }
 
 export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   const session = await getServerSession(authOptions);
 
-  if (!session?.user || !searchParams.session_id) {
+  if (!session?.user || !(await searchParams).session_id) {
     notFound();
   }
+  const sessionId = (await searchParams).session_id;
+  if (!sessionId) notFound();
+  
+  const stripeSession = await stripe.checkout.sessions.retrieve(sessionId);
 
-  const stripeSession = await stripe.checkout.sessions.retrieve(
-    searchParams.session_id
-  );
+  if (!stripeSession) notFound();
 
-  if (!stripeSession) {
-    notFound();
-  }
+  const productId = stripeSession.metadata?.productId;
+  if (!productId) throw new Error("Missing productId in Stripe session metadata.");
 
   // Create order in database
   await prisma.order.create({
     data: {
       userId: session.user.id,
-      productId: stripeSession.metadata?.productId,
+      productId,
       paymentIntent: stripeSession.payment_intent as string,
     },
   });

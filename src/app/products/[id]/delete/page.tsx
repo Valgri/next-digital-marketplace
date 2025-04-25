@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface DeleteProductPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>
 }
 
 async function getProduct(id: string) {
@@ -29,7 +27,7 @@ export default async function DeleteProductPage({
   params,
 }: DeleteProductPageProps) {
   const session = await getServerSession(authOptions);
-  const product = await getProduct(params.id);
+  const product = await getProduct((await params).id);
 
   if (!session?.user) {
     redirect("/auth/login");
@@ -48,7 +46,7 @@ export default async function DeleteProductPage({
 
     await prisma.product.delete({
       where: {
-        id: params.id,
+        id: (await params).id,
       },
     });
 
@@ -72,7 +70,7 @@ export default async function DeleteProductPage({
               </Button>
             </form>
             <Button variant="outline" asChild>
-              <Link href={`/products/${params.id}`}>Cancel</Link>
+              <Link href={`/products/${(await params).id}`}>Cancel</Link>
             </Button>
           </div>
         </div>
